@@ -27,12 +27,12 @@ export const Login = data =>{
     }
 }
 
-export const Calandar = data =>{
+export const getCalandar = () =>{
     return async dispatch => {
         try{
             const AuthStr = 'Bearer '.concat(UserToken); 
             const res = await axios.get("http://localhost:5000/calandars", { headers: { Authorization: AuthStr } })
-            console.log("ici",res.data);
+            console.log("list",res.data);
             dispatch({
                 type: "CALANDAR_DATA",
                 payload : res.data
@@ -44,8 +44,46 @@ export const Calandar = data =>{
                payload: 'error'
               })
         }
+}}
 
-    
-    
+export const postCalndar = data =>{
+    return async dispatch => {
+    try{
+        const AuthStr = 'Bearer '.concat(UserToken); 
+        const res = await axios.post("http://localhost:5000/calandars", data, { headers: { Authorization: AuthStr } })
+        console.log('data',data);
+        console.log("ici",res.data);
+        dispatch({
+            type: "CALANDAR_DATA",
+            payload : res.data
+           });
+    }catch(err){
+        console.log("ici",err);
+        dispatch({
+            type: "AUTH_ERROR",
+           payload: 'error'
+          })
+    }
 }
 }
+
+export const delectCalandar = data =>{
+    return async dispatch => {
+        try{
+            const AuthStr = 'Bearer '.concat(UserToken); 
+    const res = await axios.delete("http://localhost:5000/calandars", data, { headers: { Authorization: AuthStr } })
+    console.log('data',data);
+    console.log("ici",res.data);
+    dispatch({
+        type: "CALANDAR_DATA",
+        payload : res.data
+       });
+        }catch(err){
+    console.log("ici",err);
+    dispatch({
+        type: "AUTH_ERROR",
+       payload: 'error'
+      })
+
+    }
+}}    

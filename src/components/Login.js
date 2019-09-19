@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import CustomInput from './CustomInput';
+import AuthInput from './CustInput';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -41,7 +41,7 @@ class Login extends Component{
                 id="email"
                 label="Enter votre username "
                 placeholder="username"
-                component={ CustomInput } />
+                component={ AuthInput } />
             </fieldset>
             <fieldset>
               <Field
@@ -50,7 +50,7 @@ class Login extends Component{
                 id="password"
                 label="Enter votre mot de passe "
                 placeholder="mot de passe"
-                component={ CustomInput } />
+                component={ AuthInput } />
             </fieldset>
             
             { this.props.errorMessage ? 

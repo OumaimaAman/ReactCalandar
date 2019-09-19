@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class CustomInput extends Component {
+export default class CustInput extends Component {
   render() {
     const { input: { value, onChange } } = this.props;
     return (
